@@ -7,6 +7,6 @@ sock.bind(('0.0.0.0', 5000))
 print("waiting for message")
 
 while True:
-    data, addr = sock.recvfrom(1024)
-    message = data.decode('utf-8')
-    print(f"The message was: {message}")
+    max_buffer_size: int = 35280
+    data, addr = sock.recvfrom(max_buffer_size)
+    print(f"Bytes: {data}")
