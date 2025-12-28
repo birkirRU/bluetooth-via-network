@@ -9,4 +9,5 @@ print("waiting for message")
 while True:
     max_buffer_size: int = 35280
     data, addr = sock.recvfrom(max_buffer_size)
-    print(f"Bytes: {data}")
+    print(f"Bytes")
+    print()

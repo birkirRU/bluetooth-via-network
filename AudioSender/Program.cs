@@ -31,7 +31,7 @@ capture.RecordingStopped += (s, a) =>
 
 void SetTimer()
 {
-    System.Timers.Timer aTimer = new System.Timers.Timer(2000);
+    System.Timers.Timer aTimer = new System.Timers.Timer(4000);
     aTimer.Elapsed += (source, e) =>
     {
         capture.StopRecording();
@@ -43,7 +43,7 @@ void SetTimer()
 
 
 capture.StartRecording();
-SetTimer();
+SetTimer();    
 while (capture.CaptureState != NAudio.CoreAudioApi.CaptureState.Stopped)
 {
     Thread.Sleep(500);
