@@ -18,9 +18,9 @@ var capture = new WasapiLoopbackCapture();
 capture.DataAvailable += (s, a) =>
 {
     byte[] audioData= a.Buffer;
+    Console.WriteLine($"Buffer size: {a.BytesRecorded}");
 
     client.Send(audioData, audioData.Length, ipEndpoint);
-
 };
 
 capture.RecordingStopped += (s, a) =>
@@ -31,7 +31,7 @@ capture.RecordingStopped += (s, a) =>
 
 void SetTimer()
 {
-    System.Timers.Timer aTimer = new System.Timers.Timer(4000);
+    System.Timers.Timer aTimer = new System.Timers.Timer(1000);
     aTimer.Elapsed += (source, e) =>
     {
         capture.StopRecording();
@@ -44,8 +44,7 @@ void SetTimer()
 
 capture.StartRecording();
 SetTimer();    
-while (capture.CaptureState != NAudio.CoreAudioApi.CaptureState.Stopped)
-{
+while (capture.CaptureState != NAudio.CoreAudioApi.CaptureState.Stopped) {
     Thread.Sleep(500);
 }
 
