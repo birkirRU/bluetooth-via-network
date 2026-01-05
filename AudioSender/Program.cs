@@ -15,12 +15,24 @@ IPEndPoint ipEndpoint = new IPEndPoint(ipaddress, port);
 
 var capture = new WasapiLoopbackCapture();
 
+
+byte[] header = new byte[12];
+// Sample rate (4 bytes)
+BitConverter.GetBytes(capture.WaveFormat.SampleRate).CopyTo(header, 0);
+// Bit depth (4 bytes)  
+BitConverter.GetBytes(capture.WaveFormat.BitsPerSample).CopyTo(header, 4);
+// Channels (4 bytes)
+BitConverter.GetBytes(capture.WaveFormat.Channels).CopyTo(header, 8);
+
+// Send header
+client.Send(header, header.Length, ipEndpoint);
+
 capture.DataAvailable += (s, a) =>
 {
     byte[] audioData= a.Buffer;
     Console.WriteLine($"Buffer size: {a.BytesRecorded}");
 
-    client.Send(audioData, audioData.Length, ipEndpoint);
+    client.Send(audioData, a.BytesRecorded, ipEndpoint);
 };
 
 capture.RecordingStopped += (s, a) =>
