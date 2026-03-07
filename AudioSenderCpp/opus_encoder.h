@@ -1,8 +1,9 @@
 #pragma once
 
-#include <opus.h>
+#include <opus/opus.h>
 #include <vector>
 #include <cstdint>
+#include "audio_capture.h"
 
 constexpr int MAX_PACKET_SIZE = 4000;
 

@@ -28,7 +28,6 @@ bool OpusEncoder::Initialize(int sampleRate, int channels)
     opus_encoder_ctl(_encoder, OPUS_SET_BITRATE(64000));
     opus_encoder_ctl(_encoder, OPUS_SET_COMPLEXITY(10));
     opus_encoder_ctl(_encoder, OPUS_SET_VBR(1));
-    opus_encoder_ctl(_encoder, OPUS_SIGNAL(VOICE));
 
     return true;
 }

@@ -1,10 +1,36 @@
-# Build results
+# Build directories
+build/
 [Bb]in/
 [Oo]bj/
-[Ll]og/
-[Ll]ogs/
 
-# Visual Studio / VS Code
+# CMake generated files
+**/CMakeFiles/
+**/CMakeCache.txt
+**/cmake_install.cmake
+**/CMakeConfigureLog.yaml
+**/build.ninja
+**/Makefile
+**/*.cmake
+**/CTestTestfile.cmake
+**/CMakeDirectoryInformation.cmake
+**/TargetDirectories.txt
+**/pkgRedirects/
+**/CMakeScratch/
+
+# Compiled binaries
+*.exe
+*.dll
+*.pdb
+audio_receiver                    # Linux executable
+**/*.exe
+**/*.dll
+
+# Ninja build files
+ninja_deps
+ninja_log
+rules.ninja
+
+# IDE files
 .vs/
 .vscode/
 *.suo
@@ -12,17 +38,7 @@
 *.userosscache
 *.sln.docstates
 
-# Build results
-*.dll
-*.exe
-*.pdb
-
-# .NET
-project.lock.json
-project.fragment.lock.json
-artifacts/
-
-# Others
+# Temp files
 *.swp
 *.*~
 .DS_Store
